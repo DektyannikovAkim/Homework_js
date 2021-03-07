@@ -20,14 +20,14 @@
     <p>Результат: </p>
     <input type="text" id="result">
 
-    <button onclick="mathOperation('fstvalue','scndvalue', 'plus', 'result')" id="plus" value="+">+</button>
-    <button onclick="mathOperation('fstvalue','scndvalue', 'minus', 'result')" id="minus" value="-">-</button>
-    <button onclick="mathOperation('fstvalue','scndvalue', 'multiply', 'result')" id="multiply" value="*">*</button>
-    <button onclick="mathOperation('fstvalue','scndvalue', 'split', 'result')" id="split" value="/">/</button>
+    <button onclick="parseInputs('fstvalue','scndvalue', 'plus', 'result')" id="plus" value="+">+</button>
+    <button onclick="parseInputs('fstvalue','scndvalue', 'minus', 'result')" id="minus" value="-">-</button>
+    <button onclick="parseInputs('fstvalue','scndvalue', 'multiply', 'result')" id="multiply" value="*">*</button>
+    <button onclick="parseInputs('fstvalue','scndvalue', 'split', 'result')" id="split" value="/">/</button>
     <br>
     <br>
     <label for="contrbtn">Введите сумму для зачисления</label><input type="text" id="contrbtn">
-    <button onclick="contribution('contrbtn')">Зачислить</button>
+    <button onclick="resultEnrollment('contrbtn')">Зачислить</button>
 </body>
 
 </html>

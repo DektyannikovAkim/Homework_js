@@ -5,6 +5,7 @@
 // var a = 1,
 //     b = 1,
 //     c, d;
+// a и b присваивается значение 1, c и d будут не определены (undefined)
 // /*в данном примере используется префиксная форма инкремента,
 //  т.е. наша переменная увеличивается на единицу, а префиксная форма позвляет нам получить значение после уведичения*/
 // c = ++a;
@@ -47,7 +48,7 @@ if (a >= 0 && b >= 0) {
     result = a - b;
 } else if (a < 0 && b < 0) {
     result = a * b;
-} else if (a < 0 && b >= 0 || a >= 0 && b < 0) {
+} else if (Math.sign(a) != Math.sign(b)) {
     result = a + b;
 }
 
@@ -58,80 +59,67 @@ alert(result);
 //4. Задание 
 
 function sumOperation(a, b) {
-    let summ = a + b;
-    return summ;
+    return a + b;
 }
 
 function diffOperation(a, b) {
-    let diff = a - b;
-    return diff;
+    return a - b;
 }
 
 function multpnOperation(a, b) {
-    let multpn = a * b;
-    return multpn;
+    return a * b;
 }
 
 function divsnOperation(a, b) {
-    let divsn = a / b;
-    return divsn;
+    return a / b;
 }
 
 // 5. Задание
 
-function mathOperation(id1, id2, id3, id4) {
+function mathOperation(arg1, arg2, operation) {
+    switch (operation) {
+        case "+":
+            return sumOperation(arg1, arg2);
+        case "-":
+            return diffOperation(arg1, arg2);
+        case "*":
+            return multpnOperation(arg1, arg2);
+
+        case "/":
+            return divsnOperation(arg1, arg2);
+
+    }
+}
+
+
+function parseInputs(id1, id2, id3, id4) {
     let a = parseFloat(document.getElementById(id1).value.replace(',', '.'));
     let b = parseFloat(document.getElementById(id2).value.replace(',', '.'));
     let operation = document.getElementById(id3).value;
     if (isNaN(a) != true && isNaN(b) != true) {
-        switch (operation) {
-            case "+":
-                document.getElementById(id4).value = sumOperation(a, b);
-                break;
-            case "-":
-                document.getElementById(id4).value = diffOperation(a, b);
-                break;
-            case "*":
-                document.getElementById(id4).value = multpnOperation(a, b);
-                break;
-            case "/":
-                document.getElementById(id4).value = divsnOperation(a, b);
-                break;
-
-        }
+        document.getElementById(id4).value = mathOperation(a, b, operation);
     } else alert("Введите числа!")
 }
 
 // 6. Задание
 
-function contribution(id) {
-    let numbers = [{
-        endings: ["0", "5", "6", "7", "8", "9"]
-    }, {
-        endings: ["1"]
-    }, {
-        endings: ["2", "3", "4"]
-    }]
-    let i = 0;
+function contribution(number) {
+    let textForms = ["рубль", "рубля", "рублей"];
+    let num = number % 100
+    let residue = num % 10
+    if (num > 10 && num < 20) {
+        return textForms[2]
+    }
+    if (residue > 1 && residue < 5) {
+        return textForms[1]
+    }
+    if (residue === 1) {
+        return textForms[0]
+    }
+    return textForms[2]
+}
 
-
-    let userNumber = (document.getElementById(id).value)[(document.getElementById(id).value).length - 1];
-    if (isNaN(document.getElementById(id).value) != true) {
-        for (let number of numbers) {
-            if (number.endings.indexOf(userNumber) !== -1 && i == 0) {
-                alert(`Ваша сумма в ${document.getElementById(id).value} рублей успешно зачислена`);
-                break;
-            } else if (number.endings.indexOf(userNumber) !== -1 && i == 1) {
-                alert(`Ваша сумма в ${document.getElementById(id).value} рубль успешно зачислена`);
-                break;
-            } else if (number.endings.indexOf(userNumber) !== -1 && i == 2) {
-                alert(`Ваша сумма в ${document.getElementById(id).value} рубля успешно зачислена`);
-                break;
-            }
-            i++;
-        }
-    } else alert("Введите число");
-
-
-
+function resultEnrollment(id) {
+    let enroll = document.getElementById(id).value;
+    alert(`Ваша сумма в ${enroll} ${contribution(enroll)} успешно зачислена`);
 }
