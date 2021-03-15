@@ -7,7 +7,7 @@ for (let i = 0; i <= 10; i++) {
         console.log(i + " - это ноль");
     } else if (i % 2 !== 0) {
         console.log(i + " - нечетное число");
-    } else if (i % 2 === 0) {
+    } else {
         console.log(i + " - четное число");
     }
 
@@ -60,8 +60,8 @@ const products1 = [{
     },
 ];
 
-products1.forEach(function(array) {
-    array.price = array.price - (array.price * 0.15);
+products1.forEach(function(item) {
+    item.price = item.price - (item.price * 0.15);
 });
 console.log(products1);
 
@@ -93,11 +93,8 @@ const products2 = [{
     },
 ];
 
-products2.filter(function(array) {
-    if (array.photos != undefined && array.photos.length > 0) {
-        console.log(array)
-    }
-});
+let newArr = products2.filter(function(item) { return item.photos != undefined && item.photos.length > 0 });
+console.log(newArr);
 
 products2.sort(function(price1, price2) {
     if (price1.price > price2.price) {
