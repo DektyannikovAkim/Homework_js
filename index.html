@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="homework_2.js"></script>
+
+</head>
+
+<body>
+    <label for="fstvalue">введите первое число</label>
+    <input type="text" id="fstvalue">
+    <br>
+    <br>
+    <label for="scndvalue">введите второе число</label>
+    <input type="text" id="scndvalue">
+    <p>Результат: </p>
+    <input type="text" id="result">
+
+    <button onclick="parseInputs('fstvalue','scndvalue', 'plus', 'result')" id="plus" value="+">+</button>
+    <button onclick="parseInputs('fstvalue','scndvalue', 'minus', 'result')" id="minus" value="-">-</button>
+    <button onclick="parseInputs('fstvalue','scndvalue', 'multiply', 'result')" id="multiply" value="*">*</button>
+    <button onclick="parseInputs('fstvalue','scndvalue', 'split', 'result')" id="split" value="/">/</button>
+    <br>
+    <br>
+    <label for="contrbtn">Введите сумму для зачисления</label><input type="text" id="contrbtn">
+    <button onclick="resultEnrollment('contrbtn')">Зачислить</button>
+</body>
+
+</html>
