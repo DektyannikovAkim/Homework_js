@@ -93,7 +93,7 @@ const products2 = [{
     },
 ];
 
-let newArr = products2.filter(function(item) { return item.photos != undefined && item.photos.length > 0 });
+let newArr = products2.filter(function(item) { return item.hasOwnProperty('photos') && item.photos.length > 0 });
 console.log(newArr);
 
 products2.sort(function(price1, price2) {
@@ -117,9 +117,15 @@ function counter(a) {
 }
 
 // 6. Задание
-let x = "";
-for (let i = 0; i < 20; i++) {
-    x += "x";
-    console.log(x);
+// let x = "";
+// for (let i = 0; i < 20; i++) {
+//     x += "x";
+//     console.log(x);
+
+// }
+
+for (let i = 1; i <= 20; i++) {
+
+    console.log("x".repeat(i));
 
 }
