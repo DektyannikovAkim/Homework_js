@@ -3,7 +3,7 @@
 // 1. Задание
 
 function numericSeparator(num) {
-    let digitsOfNumbers = new Object();
+    let digitsOfNumbers = {};
     if (Number.isInteger(num) && 0 <= num && num <= 999) {
         let number = num % 100
         let residue = number % 10
@@ -14,7 +14,7 @@ function numericSeparator(num) {
     console.log(digitsOfNumbers)
 }
 
-numericSeparator(1000);
+numericSeparator(785);
 
 // 2. Задание
 
@@ -42,7 +42,7 @@ class Product {
     }
 }
 
-let product1 = new Product('apple', '200');
+let product1 = new Product('apple', 200);
 product1.make25PersentDiscount();
 console.log(product1);
 
