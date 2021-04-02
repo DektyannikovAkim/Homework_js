@@ -21,9 +21,12 @@
 
     <script>
         let tagList = document.getElementsByTagName("h2");
-        [].forEach.call(tagList, (element) => {
+        // [].forEach.call(tagList, (element) => {
+        //     console.log(element.className);
+        // });
+        for (let element of tagList) {
             console.log(element.className);
-        });
+        };
     </script>
 </body>
 

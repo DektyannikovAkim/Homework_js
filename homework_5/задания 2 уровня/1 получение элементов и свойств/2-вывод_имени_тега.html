@@ -20,9 +20,12 @@
 
     <script>
         let elements = document.getElementsByClassName('one');
-        [].forEach.call(elements, (element) => {
+        // [].forEach.call(elements, (element) => {
+        //     console.log(element.tagName);
+        // });
+        for (let element of elements) {
             console.log(element.tagName);
-        });
+        };
     </script>
 </body>
 
