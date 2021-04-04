@@ -42,8 +42,7 @@
         // let fifthStar = document.getElementById('fifth');
 
         let goldenClass = 'golden';
-
-        // console.log(fifthStar.previousElementSibling)
+        let iList = document.querySelectorAll("i");
 
         // firstStar.addEventListener('mouseover', function() {
         //     if (!firstStar.classList.contains('goldenClass')) {
@@ -55,28 +54,25 @@
         //     firstStar.classList.remove(goldenClass);
         // });
 
-        let iList = document.querySelectorAll("i");
 
 
         window.addEventListener('mouseover', (event) => {
-            if ([].indexOf.call(iList, event.target) !== -1) {
-                event.target.classList.add(goldenClass)
-                if (event.target.id !== "first") {
-                    for (let i = [].indexOf.call(iList, event.target); i > 0; i--) {
-                        iList[i].previousElementSibling.classList.add(goldenClass);
-                    }
+            if (event.target.classList.contains('fa-star')) {
+                let currStar = event.target
+                do {
+                    currStar.classList.add(goldenClass)
                 }
+                while (currStar = currStar.previousElementSibling)
             }
         });
 
         window.addEventListener('mouseout', (event) => {
-            if ([].indexOf.call(iList, event.target) !== -1) {
-                event.target.classList.remove(goldenClass)
-                if (event.target.id !== "first") {
-                    for (let i = [].indexOf.call(iList, event.target); i > 0; i--) {
-                        iList[i].previousElementSibling.classList.remove(goldenClass);
-                    }
+            if (event.target.classList.contains('fa-star')) {
+                let currStar = event.target
+                do {
+                    currStar.classList.remove(goldenClass)
                 }
+                while (currStar = currStar.previousElementSibling)
             }
         });
     </script>

@@ -45,10 +45,8 @@
     <script>
         let imgList = document.querySelectorAll("img");
         setTimeout(() => {
-            for (let img of imgList) {
-                for (let i = 0; i < imgList.length; i++) {
-                    img.setAttribute("src", `images/${[].indexOf.call(imgList, img) + 1}.jpg`);
-                }
+            for (let i = 0; i < imgList.length; i++) {
+                imgList[i].setAttribute("src", `images/${i + 1}.jpg`);
             }
         }, 3000);
     </script>
