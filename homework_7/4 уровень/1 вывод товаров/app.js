@@ -76,9 +76,7 @@ let btnList = document.querySelectorAll("button");
 let divPrdt = document.querySelector(".products");
 
 btnList.forEach((btnItem) => {
-    btnItem.addEventListener("click", (event) => {
-        clickHandler(event);
-    });
+    btnItem.addEventListener("click", clickHandler);
 });
 
 
@@ -106,7 +104,6 @@ function clickHandler(event) {
  */
 function showCategory(category) {
     let productsArray = products[category];
-    console.log(productsList);
     productsArray.forEach((product) => {
         getProductMarkup(product);
     });

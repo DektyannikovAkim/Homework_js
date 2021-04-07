@@ -51,19 +51,9 @@ function changeActiveClass(event) {
  * @param {MouseEvent} event Объект .nav-link на котором произошло событие.
  * @param {number} navLngt Длина строки содержащейся в .nav-link.
  * @param {number} navNmb Номер ссылки на которой произошло событие.
- * @param {Array} textsArrKeys Массив из ключей объекта texts, для дальнейшего получения текста
- *  соответствующего номеру ссылки на которой произошло событие.
- * @param {number} textNumber Номер ключа texts, сравниваемого с номером ссылки .nav-link,
- * для поиска соответствующего текста. 
  */
 function changeText(event) {
     let navLngt = event.textContent.length;
     let navNmb = parseInt(event.textContent[navLngt - 1]);
-    let textsArrKeys = Object.keys(texts);
-    textsArrKeys.forEach((textsArrItem) => {
-        let textNumber = parseInt(textsArrItem[textsArrItem.length - 1]);
-        if (navNmb == textNumber) {
-            divTextItem.textContent = texts[textsArrItem];
-        }
-    });
+    divTextItem.textContent = texts[`text${navNmb}`];
 }
