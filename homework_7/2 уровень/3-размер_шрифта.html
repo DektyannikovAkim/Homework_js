@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="range" min="20" max="100">
+    <div>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat, expedita.
+    </div>
+
+    <!-- 
+    Задание. Нужно чтобы при смещении ползунка в div менялся размер шрифта.
+    1. Получите ссылку на input.
+    2. Получите ссылку на div.
+    3. Input'у поставьте прослушивание события 'input';
+        3.1 У функции-обработчика определите параметр event.
+        3.2 Значение input'а читайте из event.target.value.
+    -->
+
+
+    <script>
+        // Закомментированный код предназначен для варианта с заданным размером шрифта у div.
+        // @param {number} inputDrop Первоначчальное значение input, для вычисления дельты ползунка.
+        // @param {number} divSizeText Заданный по умолчанию размер шрифта.
+        // @param {number} inputValue Изменяемое значение input'a, при перемещении ползунка.
+
+
+        let inputItem = document.querySelector("input");
+        let divItem = document.querySelector("div");
+        // const inputDrop = inputItem.value;
+        // const divSizeText = parseInt(divItem.style.fontSize);
+
+        inputItem.addEventListener("input", (event) => {
+            let inputValue = event.target.value;
+            divItem.style.fontSize = `${inputValue}px`;
+
+            // //Проверяем в какую сторону происходит смещение ползунка у input
+            // if (inputValue > inputDrop) {
+            // //При смещении вправо к размеру шрифта по умолчанию прибавляем наш шаг ползунка
+            //     divItem.style.fontSize = `${divSizeText + (inputValue - inputDrop)}px`;
+            // } else {
+            // //При смещении ввлево от размера шрифта по умолчанию отнимаем наш шаг ползунка
+            //     divItem.style.fontSize = `${divSizeText - (inputDrop - inputValue)}px`;
+            // }
+        });
+    </script>
+</body>
+
+</html>
