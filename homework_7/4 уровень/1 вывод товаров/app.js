@@ -11,8 +11,7 @@
 */
 
 const products = {
-    phones: [
-        {
+    phones: [{
             id: 1,
             name: "Смартфон 1",
             price: "23,99 р.",
@@ -32,8 +31,7 @@ const products = {
         },
     ],
 
-    tablets: [
-        {
+    tablets: [{
             id: 4,
             name: "Планшет 4",
             price: "99,99 р.",
@@ -47,8 +45,7 @@ const products = {
         },
     ],
 
-    tv: [
-        {
+    tv: [{
             id: 6,
             name: "Телевизор 6",
             price: "199,99 р.",
@@ -75,28 +72,44 @@ const products = {
     ],
 };
 
+let btnList = document.querySelectorAll("button");
+let divPrdt = document.querySelector(".products");
+
+btnList.forEach((btnItem) => {
+    btnItem.addEventListener("click", (event) => {
+        clickHandler(event);
+    });
+});
+
 
 /**
  * Эта функция должна вызываться при клике по кнопкам.
- * @param {MouseEvent} event
+ * @param {MouseEvent} event Ссылка на кнопку на которой произошло событие клика.
+ * @param {string} atrbtBtn Значение data-type атрибута.
  */
 function clickHandler(event) {
+    let atrbtBtn = event.target.getAttribute("data-type");
     //вам нужно очищать содержимое .products
-    
+    divPrdt.innerHTML = '';
     //в showCategory надо передать строку с типом категории, тип берите
     //из атрибута data-type у кнопки, по которой кликнули.
-    
+    showCategory(atrbtBtn);
 }
 
 /**
  * Функция берет товары (объекты) из соответствующего массива phones,
  * tablets или tv. Генерирует разметку, используя getProductMarkup
  * и вставляет в .products
- * @param {string} category сюда должно прилетать значение атрибута data-type у кнопки,
+ * @param {string} category Значение атрибута data-type у кнопки,
  * по которой кликнули.
+ * @param {Array} productsArray Массив из товаров соответствующих переданному data атрибуту.
  */
 function showCategory(category) {
-    
+    let productsArray = products[category];
+    console.log(productsList);
+    productsArray.forEach((product) => {
+        getProductMarkup(product);
+    });
 }
 
 /**
@@ -109,5 +122,12 @@ function showCategory(category) {
  * в верху этого файла.
  */
 function getProductMarkup(product) {
+
+    divPrdt.innerHTML += `<div class="product">
+        <div>${product.name}</div>
+        <img src="${product.imageUrl}" alt="">
+        <div>${product.price}</div>
+        <a href="https://example.com/producs/${product.id}">Подробнее</a>
+    </div>`;
 
 }

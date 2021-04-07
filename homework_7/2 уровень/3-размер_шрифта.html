@@ -32,11 +32,11 @@
 
         let inputItem = document.querySelector("input");
         let divItem = document.querySelector("div");
-        // const inputDrop = parseInt(inputItem.value);
+        // const inputDrop = inputItem.value;
         // const divSizeText = parseInt(divItem.style.fontSize);
 
         inputItem.addEventListener("input", (event) => {
-            let inputValue = parseInt(event.target.value);
+            let inputValue = event.target.value;
             divItem.style.fontSize = `${inputValue}px`;
 
             // //Проверяем в какую сторону происходит смещение ползунка у input

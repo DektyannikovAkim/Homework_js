@@ -12,32 +12,58 @@ const texts = {
     обработчик клика функцию clickHandler.
 */
 
+let divTextItem = document.querySelector(".text");
+let navList = document.querySelectorAll(".nav-link");
+
+navList.forEach((navItem) => {
+    navItem.addEventListener("click", clickHandler);
+});
 
 /**
  * Обработчик клика по .nav-link
- * @param {MouseEvent} event 
+ * @param {MouseEvent} event Ссылка на .nav-link на котором произошло событие клика.
  */
 function clickHandler(event) {
     // здесь вызывайте changeText и changeActiveClass, и передавайте
     // им объект события.
-   
+    changeText(event.target);
+    changeActiveClass(event.target);
 }
 
 /**
  * Эта функция должна убирать .active у предыдущего .nav-link и ставить его
  * на тот, по которому кликнули.
- * @param {MouseEvent} event 
+ * @param {MouseEvent} event Объект .nav-link на котором произошло событие.
+ * @param {Object} navActive Объект на котором установлен класс .active в момент обработки клика.
  */
 function changeActiveClass(event) {
-    
+    if (document.querySelector(".active")) {
+        let navActive = document.querySelector(".active");
+        navActive.classList.remove("active");
+    }
+    event.classList.add("active");
 }
 
 /**
  * Эта фукнция должна читать текст (например через textContent) из 
  * .nav-link по которому кликнули и в зависимости от этого в .text
  * ставить соответствующий текст из texts.
- * @param {MouseEvent} event 
+ * @param {MouseEvent} event Объект .nav-link на котором произошло событие.
+ * @param {number} navLngt Длина строки содержащейся в .nav-link.
+ * @param {number} navNmb Номер ссылки на которой произошло событие.
+ * @param {Array} textsArrKeys Массив из ключей объекта texts, для дальнейшего получения текста
+ *  соответствующего номеру ссылки на которой произошло событие.
+ * @param {number} textNumber Номер ключа texts, сравниваемого с номером ссылки .nav-link,
+ * для поиска соответствующего текста. 
  */
 function changeText(event) {
-    
+    let navLngt = event.textContent.length;
+    let navNmb = parseInt(event.textContent[navLngt - 1]);
+    let textsArrKeys = Object.keys(texts);
+    textsArrKeys.forEach((textsArrItem) => {
+        let textNumber = parseInt(textsArrItem[textsArrItem.length - 1]);
+        if (navNmb == textNumber) {
+            divTextItem.textContent = texts[textsArrItem];
+        }
+    });
 }
