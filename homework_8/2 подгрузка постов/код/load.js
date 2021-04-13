@@ -12,6 +12,7 @@ function init() {
     // init.
     if (window.innerHeight === document.body.offsetHeight) {
         insertPosts();
+        init();
     }
 }
 init();
